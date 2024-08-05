@@ -21,6 +21,11 @@ def emo_detect():
     text_to_analyze = request.args.get('textToAnalyze')
     # Pass the text to the emotion detector function and store the response
     response = emotion_detector(text_to_analyze)
+
+    # Check if the dominant emotion is None, indicating an error or invalid input
+    if response['dominant_emotion'] is None:
+        return "Invalid input! Try again."
+
     # Extract the emotions and dominant emotion from the response
     anger = response['anger']
     disgust = response['disgust']
