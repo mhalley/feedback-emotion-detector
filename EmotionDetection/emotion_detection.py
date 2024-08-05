@@ -9,6 +9,11 @@ def emotion_detector(text_to_analyze):  # Define a function named emotion_detect
 
     # Parsing the JSON response from the API
     formatted_response = json.loads(response.text)
+
+     # Check if 'emotionPredictions' key exists in the response or if the response status code is 400
+    if 'emotionPredictions' not in formatted_response or response.status_code == 400:
+        return {'anger': None, 'disgust': None, 'fear': None, 'joy': None, 'sadness': None, 'dominant_emotion': None}
+
     # Extracting emotions from the response
     anger_score = formatted_response['emotionPredictions'][0]['emotion']['anger']
     disgust_score = formatted_response['emotionPredictions'][0]['emotion']['disgust']
@@ -19,17 +24,6 @@ def emotion_detector(text_to_analyze):  # Define a function named emotion_detect
     dominant_emotion_score = max([anger_score, disgust_score, fear_score, joy_score, sadness_score])
     emotions = ['anger', 'disgust', 'fear', 'joy', 'sadness']
     dominant_emotion = [emotion for emotion in emotions if formatted_response['emotionPredictions'][0]['emotion'][emotion] == dominant_emotion_score][0]
-
-    # If the response status code is 400, give value 'None' for all scores
-    if response.status_code == 400:
-        # Extracting sentiment label and score from the response
-        anger_score = None
-        disgust_score = None
-        fear_score = None
-        joy_score = None
-        sadness_score = None
-        dominant_emotion = None
-        
 
     # Returning a dictionary containing emotional detector results
     return {'anger': anger_score, 'disgust': disgust_score, 'fear': fear_score, 'joy': joy_score, 'sadness': sadness_score, 'dominant_emotion': dominant_emotion}
