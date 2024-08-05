@@ -35,7 +35,9 @@ def emo_detect():
     dominant_emotion = response['dominant_emotion']
 
     # Return a formatted string with the emotions and dominant emotion
-    return f"For the given statement, the system response is 'anger': {anger}, 'disgust': {disgust}, 'fear': {fear}, 'joy': {joy}, and 'sadness': {sadness}. The dominant emotion is <strong>{dominant_emotion}</strong>."
+    return (f"For the given statement, the system response is 'anger': {anger}, "
+          f"'disgust': {disgust}, 'fear': {fear}, 'joy': {joy}, and 'sadness': {sadness}. "
+          f"The dominant emotion is <strong>{dominant_emotion}</strong>.")
 
 @app.route("/")
 def render_index_page():
