@@ -30,5 +30,7 @@ Input text in the text box and click the "Analyze for emotions" button to receiv
 
 ## Acknowledgments
 IBM Developing AI Applications with Python and Flask Course final project starter: https://github.com/ibm-developer-skills-network/oaqjp-final-project-emb-ai.git
+
 Emotion Predict in Watson NLP Library: https://www.ibm.com/docs/en/watson-libraries?topic=catalog-emotion
+
 Flask framework: https://flask.palletsprojects.com/en/3.0.x/
